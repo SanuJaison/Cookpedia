@@ -1,0 +1,60 @@
+<app-header></app-header>
+<div class="container">
+  <div class="bg-success p-5 row align-items-center text-light">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-5">
+      <h1>The Easiest Way to Make Your Favorite Meal</h1>
+      <p>
+        iscover 100+ recipes in yout hand with the best recipe. Helps you find the easiest way to
+        cook
+      </p>
+      <a class="btn btn-success border" routerLink="/recipes">Explore Our Recipies</a>
+    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-5">
+      <img
+        class="w-75 landingImg"
+        src="https://www.pngall.com/wp-content/uploads/2/Healthy-Meal.png"
+        alt=""
+      />
+    </div>
+  </div>
+
+  <!-- populr recipes -->
+  <section class="p-5 my-5">
+    <h1>Popular Recipies of the Week</h1>
+    <div class="d-flex justify-content-between">
+      <p>Our Most Popular of the Week</p>
+      <a routerLink="/recipes">View all</a>
+    </div>
+    <div class="row my-3">
+      @for (recipe of allRecipes$ |async |slice:0:6; track $index) {
+        <div class="p-3 col-lg-4">
+        <img
+          class="img-fluid"
+          [src]="recipe.image"
+          alt="recipe.image"
+        />
+        <h5 class="mt-2">{{recipe.name}}</h5>
+      </div>
+      }
+      
+    </div>
+  </section>
+
+  <!-- Testimony -->
+  <section class="my-5 text-center">
+    <h1>Client Testimonials</h1>
+    <div class="d-flex my-5 scroll-text">
+      @for (item of approvedTestimonials(); track $index) {}
+      <div class="rounded shadow p-3 border me-2 w-25 text-wrap">
+        <h5>Name</h5>
+        <p>Content</p>
+      </div>
+
+      <!--  -->
+    </div>
+  </section>
+</div>
+
+<app-footer></app-footer>

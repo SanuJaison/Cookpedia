@@ -1,0 +1,61 @@
+<div class="container">
+  <div style="background: url()" class="row align-items-center">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-6 text-center">
+      <h1>Register</h1>
+      <p>More than 100</p>
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="handleRegister()"
+        style="background-color: rgba(0, 0, 0, 0.3)"
+        class="border rounded shadow p-5 mt-5"
+      >
+        <div class="text-center mb-3 text-light">
+          <h3>CookPiedia</h3>
+        </div>
+        <div class="text-center mb-3 text-light">
+          <input
+            name="username"
+            formControlName="username"
+            type="text"
+            placeholder="Enter ur Username"
+            class="form-control"
+          />
+        </div>
+        @if (registerForm.get('username')?.errors && registerForm.get('username')?.touched) {
+          <p class="text-danger">Inavild Username</p>
+        }
+
+        <div class="text-center mb-3 text-light">
+          <input
+            name="email"
+            formControlName="email"
+            type="email"
+            placeholder="Enter ur email"
+            class="form-control"
+          />
+        </div>
+        @if (registerForm.get('email')?.errors && registerForm.get('email')?.touched) {
+          <p class="text-danger">Inavild Email</p>
+        }
+
+        <div class="text-center mb-3 text-light">
+          <input
+            name="password"
+            formControlName="password"
+            type="password"
+            placeholder="Enter ur Password"
+            class="form-control"
+          />
+        </div>
+        @if (registerForm.get('password')?.errors && registerForm.get('password')?.touched) {
+          <p class="text-danger">Inavild Password</p>
+        }
+
+        <button type="submit" class="btn btn-primary">Register</button>
+        <p class="my-3">Already a user? <span routerLink="/login">Login</span></p>
+      </form>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>

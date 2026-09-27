@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2">
+      <app-admin-sidebar></app-admin-sidebar>
+    </div>
+    <div class="col">
+      <app-admin-header></app-admin-header>
+
+      <div class="m-3">
+        <h1>Download List</h1>
+        <table class="table my-5 table-striped table-hover">
+          <thead>
+            <tr class="table-success">
+              <th>#</th>
+              <th>Recipe ID</th>
+              <th>Name</th>
+              <th>Cuisine</th>
+              <th>Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of allDownloadList(); track $index) {
+              <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ item._id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.cuisine }}</td>
+                <td>{{ item.count }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

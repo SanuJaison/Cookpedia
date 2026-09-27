@@ -1,0 +1,154 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2">
+      <app-admin-sidebar></app-admin-sidebar>
+    </div>
+    <div class="col">
+      @if (recipeID) {
+        <h1 class="text-center">Edit Recipe Details</h1>
+      } @else {
+        <h1 class="text-center">Add Recipe Details</h1>
+      }
+
+      <!-- {{recipeDetails()|json}} -->
+      <div class="border p-5 rounded my-5">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="mb-2">
+              <input
+                [(ngModel)]="recipeDetails().servings"
+                type="text"
+                placeholder="Recipe Name"
+                class="form-control"
+              />
+            </div>
+            <div class="mb-2">
+              <input
+                [(ngModel)]="recipeDetails().cuisine"
+                type="text"
+                placeholder="Recipe Cuisine"
+                class="form-control"
+              />
+            </div>
+            <div class="mb-2">
+              <input type="text" placeholder="Recipe Image URL" class="form-control" />
+            </div>
+            <div class="mb-2">
+              <input
+                type="text"
+                placeholder="Recipe Preparation Time in Minutes"
+                class="form-control"
+              />
+            </div>
+            <div class="mb-2">
+              <!-- add ingredient -->
+              <div class="d-flex mb-2">
+                <textarea
+                  #ingredientInput
+                  placeholder="Add Ingredients"
+                  class="form-control"
+                ></textarea>
+                <button (click)="addIngredient(ingredientInput)" class="btn fw-bolder fs-1 ms-1">
+                  +
+                </button>
+              </div>
+              <!-- ingredients list display -->
+              @for (item of ingredientsArray; track $index) {
+                <div class="d-flex mb-1">
+                  <input
+                    [value]="item"
+                    readonly
+                    type="text"
+                    placeholder="Ingredient"
+                    class="form-control"
+                  />
+                  <button (click)="removeIngredient(item)" class="btn ms-1">
+                    <i class="fa-solid fa-trash text-danger"></i>
+                  </button>
+                </div>
+              }
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="mb-2">
+              <input
+                [(ngModel)]="recipeDetails().servings"
+                type="text"
+                placeholder="Servings (ex:4)"
+                class="form-control"
+              />
+            </div>
+            <div class="mb-2">
+              <input
+                [(ngModel)]="recipeDetails().servings"
+                type="text"
+                placeholder="Calorie Per Servings (ex:350)"
+                class="form-control"
+              />
+            </div>
+            <div class="mb-2">
+              <input type="text" placeholder="Recipe Cook Time in Minutes" class="form-control" />
+            </div>
+            <div class="mb-2">
+              <input
+                type="text"
+                placeholder="Mode of Cooking (ex: Hard / Medium / Easy)"
+                class="form-control"
+              />
+            </div>
+            <div class="mb-2">
+              <!-- add instruction -->
+              <div class="d-flex mb-2">
+                <textarea
+                  #ingredientInput
+                  placeholder="Add Instructions"
+                  class="form-control"
+                ></textarea>
+                <button (click)="addIngredient(ingredientInput)" class="btn fw-bolder fs-1 ms-1">
+                  +
+                </button>
+              </div>
+              <!-- instruction list display -->
+              @for (item of ingredientsArray; track $index) {
+                <div class="d-flex mb-1">
+                  <input
+                    [value]="item"
+                    readonly
+                    type="text"
+                    placeholder="Instruction"
+                    class="form-control"
+                  />
+                  <button (click)="removeIngredient(item)" class="btn ms-1">
+                    <i class="fa-solid fa-trash text-danger"></i>
+                  </button>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+        <!-- add meal type -->
+        <div class="d-flex my-2">
+          <textarea
+            placeholder="Add Meal Type (ex: Breakfast, Lunch, Dinner etc...)"
+            class="form-control"
+          ></textarea>
+          <button class="btn fw-bolder fs-1 ms-1">+</button>
+        </div>
+        <!-- mealtype list display -->
+        <div class="d-flex flex-wrap">
+          <span class="border rounded ps-2 me-1">
+            item
+            <button class="btn fw-bolder"><i class="fa-solid fa-x text-danger"></i></button>
+          </span>
+        </div>
+        <div class="text-center mt-3">
+          @if (recipeID) {
+            <button class="btn btn-warning text-light">UPDATE RECIPE</button>
+          } @else {
+            <button class="btn btn-primary">ADD RECIPE</button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

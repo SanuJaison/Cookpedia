@@ -1,0 +1,58 @@
+<app-header></app-header>
+<div class="container">
+  <div style="height: 200px" class="row bg-success"></div>
+  <div
+    class="p-2 border"
+    style="height: 220px; width: 220px; border-radius: 50%; margin-top: -100px"
+  >
+    <img
+      width="200px"
+      height="200px"
+      style="border-radius: 50%"
+      [src]="imageURL()"
+      alt=""
+    />
+  </div>
+
+  <label for="uploading">
+    <input type="file" hidden id="uploading" />
+    <span (change)="handleUploadProfile($event)" style="margin-left: 100px; margin-top: -30px" class="btn btn-primary"> icon </span>
+  </label>
+
+  <h1 class="d-flex align-items-center my-5">{{username}}</h1>
+  <p style="text-align: justify">
+    🍲 Passionate about discovering simple, delicious recipes and experimenting in the kitchen. I
+    enjoy trying new cuisines, adding my own twists to classic dishes, and sharing my cooking
+    experiences with the Cookpedia community.
+  </p>
+
+  <p>
+    ✨ On Cookpedia, I love exploring quick meals, healthy recipes, and traditional favorites that
+    bring comfort and flavor together.
+  </p>
+
+  <p>📍 Favorite Cuisines: Indian, Italian, Continental</p>
+  <p>❤️ Cooking Level: Beginner → Intermediate</p>
+
+  <p>🕒 Cooking Style: Quick & Easy Meals</p>
+
+  <h3 class="my-5">Recipe Download List</h3>
+  <div class="row">
+    @if ((userDownloadList$ | async).length > 0) {
+      @for (recipe of userDownloadList$ | async; track $index) {
+        <div class="col-lg-2">
+          <div class="p-1">
+            <img [src]="recipe.image" alt="recipe" class="card-img-top img-fluid" />
+            <div class="card-body">
+              <h5 class="card-title">{{ recipe.name }}</h5>
+            </div>
+          </div>
+        </div>
+      }
+    }
+
+    <p class="fw-bolder">You have not download any recipe yet!!!</p>
+  </div>
+</div>
+
+<app-footer></app-footer>

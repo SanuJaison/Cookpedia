@@ -1,0 +1,21 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row p-5 bg-success text-center text-light">
+    <h1>Recipe Collections</h1>
+  </div>
+
+  <div class="row my-5">
+    @for (recipe of recipeCollection(); track $index) {
+      <div class="p-3 col-lg-3" >
+        <img routerLink="/recipe/{{ recipe.recipeId }}" class="img-fluid" [src]="recipe.image" alt="" />
+        <div class="d-flex justify-content-between align-items-center mt-1">
+          <h5 class="mt-2">{{ recipe.name }}</h5>
+          <button class="btn"><i (click)="removeCollection(recipe._id)" class="fa-solid fa-trash text-danger"></i></button>
+        </div>
+      </div>
+    }
+
+    <p class="text-danger">Your Recipie collection is empty</p>
+  </div>
+</div>
+<app-footer></app-footer>
