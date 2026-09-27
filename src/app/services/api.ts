@@ -9,7 +9,9 @@ import { RecipeModel } from '../admin-module/models/recipeModel';
 export class Api {
   http = inject(HttpClient);
 
-  serverUrl: string = 'http://localhost:3000';
+  // serverUrl: string = 'http://localhost:3000';
+
+  serverUrl: string = 'https://cookpedis-backend-1.onrender.com';
 
   //api for reg a user
   registerAPI(reqBody: any) {
